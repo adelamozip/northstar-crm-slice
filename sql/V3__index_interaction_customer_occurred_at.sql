@@ -1,0 +1,1 @@
+create index idx_interaction_customer_occurred on interaction (customer_id, occurred_at desc);
