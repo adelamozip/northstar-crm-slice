@@ -134,4 +134,9 @@ Angular validates, then calls a typed service. Business rules stay in SB.
 - Demo.http covers login, CUS 1001 create, timeline, CUS-9999 404
 ```
 
+# Lab 49 -- NorthsStar CRM Interaction Slice
+
+Implement CAP-12 end to end, a validated REST API, a transactional persist, a versioned Kakfa event, a resilient consumer, and tests. A green demo alone does not pass.
+
+Governing rule: no merge without API evidence, persistence proof, versioned event proof, automated tests, and a documented failture path.
 
