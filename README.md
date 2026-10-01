@@ -134,9 +134,48 @@ Angular validates, then calls a typed service. Business rules stay in SB.
 - Demo.http covers login, CUS 1001 create, timeline, CUS-9999 404
 ```
 
-# Lab 49 -- NorthsStar CRM Interaction Slice
+## Lab 49 -- NorthsStar CRM Interaction Slice
+```
+Implement CAP-12 end to end, a validated REST API, a transactional persist,
+ a versioned Kakfa event, a resilient consumer, and tests. 
+ A green demo alone does not pass.
 
-Implement CAP-12 end to end, a validated REST API, a transactional persist, a versioned Kakfa event, a resilient consumer, and tests. A green demo alone does not pass.
+Governing rule: no merge without API evidence, persistence proof, 
+versioned event proof, automated tests, and a documented failture path.
 
-Governing rule: no merge without API evidence, persistence proof, versioned event proof, automated tests, and a documented failture path.
+Fictures (synthic only -- never real customer PII) are seeded in the database. 
+The API is secured with JWT and a correlation id.
+
+- Customer CUS-1001 Amina Khan is ACTIVE  and has a timeline
+- Customer CUS-1002 Ravi Singh is PROSPECT and has no timeline
+- Customer CUS-9999 does not exist and returns 404
+- Correlation id is lab-request-001
+
+
+```
+
+
+### Definition of done
+- [ ] ```POST``` for Amina returns 201 and a Location header
+- [ ] Invalid body returns 400 Problem details and does not persist or publish
+- [ ] CUS-9999 returns 404 and does not persist or publish
+- [ ] Flyway migration applied; row exists; generated SQL inspected once
+- [ ] One ```CustomerInteractionRecordedV1``` per successful create, keyed by customer id, correlation id present
+- [ ] Consumer dedupes on ```eventId```, retries are bounded, poison messages to the a DLT (dead letter topic)
+- [ ] Unit, MockMvc, JPA, and Kafka test green twice
+- [ ] docs/backend-demo.md lets a peer reproduce it with no verbal coaching
+- [ ] No secrets in the repo, no passwords in the code, no PII in the fixtures, no credentials in the demo.http]
+
+Publishing or persisting on a validation failure is an honor violation.
+
+## Steps for slicing
+
+
+
+
+
+
+
+
+
 
