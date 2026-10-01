@@ -41,6 +41,7 @@ correlation id   lab-request-001
 1. Guest/ anonymous
 2. Agent (service agent, record and read interactions)
 3. Admin (read all, correct status)
+```
 
 ## User stories
 
